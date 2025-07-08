@@ -35,6 +35,7 @@ export const MessageForm = ({ projectId }: Props) => {
     trpc.messages.create.mutationOptions({
       onSuccess: () => {
         form.reset();
+        toast.success("Running");
         queryClient.invalidateQueries(
           trpc.messages.getMany.queryOptions({
             projectId,
@@ -83,7 +84,7 @@ export const MessageForm = ({ projectId }: Props) => {
               onKeyDown={(e) => {
                 if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                   e.preventDefault();
-                  form.handleSubmit(onSubmit)();
+                  form.handleSubmit(onSubmit);
                 }
               }}
             />
