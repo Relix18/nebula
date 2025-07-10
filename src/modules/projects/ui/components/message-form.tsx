@@ -29,6 +29,9 @@ export const MessageForm = ({ projectId }: Props) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      value: "",
+    },
   });
 
   const createMessage = useMutation(
